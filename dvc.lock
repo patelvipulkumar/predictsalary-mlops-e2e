@@ -1,0 +1,33 @@
+schema: '2.0'
+stages:
+  validate:
+    cmd: python3 src/data_validation.py
+    deps:
+    - path: data/raw/empexpsaldataset.csv
+      hash: md5
+      md5: 3400e497d2d895a6445137a99ce9d99a
+      size: 437
+  preprocess:
+    cmd: python3 src/preprocessing.py
+    deps:
+    - path: data/raw/empexpsaldataset.csv
+      hash: md5
+      md5: 3400e497d2d895a6445137a99ce9d99a
+      size: 437
+    outs:
+    - path: data/processed/empexpsalclean.csv
+      hash: md5
+      md5: 737d65b179c29606a957b8ce2ab3c2fd
+      size: 379
+  train:
+    cmd: python3 src/train.py
+    deps:
+    - path: data/processed/empexpsalclean.csv
+      hash: md5
+      md5: 737d65b179c29606a957b8ce2ab3c2fd
+      size: 379
+    outs:
+    - path: models/model.pkl
+      hash: md5
+      md5: 94ba27914ccbffaf718d00f617834bb4
+      size: 833
