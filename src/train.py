@@ -24,7 +24,7 @@ rmse = np.sqrt(mse)
 r2 = r2_score(y_test, predictions)
 
 with mlflow.start_run():
-    mlflow.log_metric{"MSE": mse, "RMSE": rmse, "R-squared": r2}
+    mlflow.log_metrics{"MSE": mse, "RMSE": rmse, "R-squared": r2}
 
 joblib.dump(model, "models/model.pkl")
 print("MSE:", mse)
@@ -35,5 +35,6 @@ print("R-squared:", r2)
 # Upload to S3 for serving
 s3 = boto3.client("s3")
 s3.upload_file("models/model.pkl", S3_BUCKET, S3_KEY)
+
 
 print("✅ Model trained and uploaded to S3")
