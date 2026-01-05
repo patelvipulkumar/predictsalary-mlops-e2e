@@ -1,18 +1,18 @@
 stages:
   validate:
-    cmd: python src/data_validation.py
+    cmd: python3 src/data_validation.py
     deps:
       - data/raw/empexpsaldataset.csv
 
   preprocess:
-    cmd: python src/preprocessing.py
+    cmd: python3 src/preprocessing.py
     deps:
       - data/raw/empexpsaldataset.csv
     outs:
       - data/processed/empexpsalclean.csv
 
   train:
-    cmd: python src/train.py
+    cmd: python3 src/train.py
     deps:
       - data/processed/empexpsalclean.csv
     outs:
