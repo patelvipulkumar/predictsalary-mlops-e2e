@@ -23,8 +23,10 @@ mse = mean_squared_error(y_test, predictions)
 rmse = np.sqrt(mse)
 r2 = r2_score(y_test, predictions)
 
+metrics = {"MSE": mse, "RMSE": rmse, "R-squared": r2}
+
 with mlflow.start_run():
-    mlflow.log_metrics{"MSE": mse, "RMSE": rmse, "R-squared": r2}
+    mlflow.log_metrics(metrics)
 
 joblib.dump(model, "models/model.pkl")
 print("MSE:", mse)
@@ -38,3 +40,4 @@ s3.upload_file("models/model.pkl", S3_BUCKET, S3_KEY)
 
 
 print("✅ Model trained and uploaded to S3")
+
