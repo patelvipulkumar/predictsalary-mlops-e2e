@@ -3,6 +3,10 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 import numpy as np
+import joblib
+import boto3
+import os
+import mlflow
 
 S3_BUCKET = "edu-mlops-awsec2s3"
 S3_KEY = "latest/model.pkl"
@@ -40,6 +44,7 @@ s3.upload_file("models/model.pkl", S3_BUCKET, S3_KEY)
 
 
 print("✅ Model trained and uploaded to S3")
+
 
 
 
