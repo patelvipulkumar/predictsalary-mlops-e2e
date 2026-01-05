@@ -9,8 +9,8 @@ S3_KEY = "latest/model.pkl"
 
 
 df = pd.read_csv("data/processed/empexpsalclean.csv")
-X = data['YearsExperience'] 
-y = data['Salary']
+X = df['YearsExperience'] 
+y = df['Salary']
 
 # Split data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
@@ -40,5 +40,6 @@ s3.upload_file("models/model.pkl", S3_BUCKET, S3_KEY)
 
 
 print("✅ Model trained and uploaded to S3")
+
 
 
