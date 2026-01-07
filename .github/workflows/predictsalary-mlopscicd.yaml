@@ -5,9 +5,9 @@ on:
     branches:
       - main
 jobs:
-  # =============================
-  # JOB 1: Build & Push Images
-  # =============================
+  # =====================================
+  # JOB 1: Build & Push Images to Docker
+  # =====================================
   build:
     name: Build & Push to DockerHub
     runs-on: ubuntu-latest
