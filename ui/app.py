@@ -10,7 +10,8 @@ exp = st.number_input("YrsofExp")
 
 if st.button("Predict"):
 
-    if exp.strip() == "":
+    if exp is None:
+        
         st.warning("Please enter some value")   
 
     else: 
@@ -24,9 +25,10 @@ if st.button("Predict"):
 
             st.markdown(
                 f"""
-                ### 🧠 Prediction Result
+                ###Prediction Result
                 **Salary:** `{Salary}`
                 """
             )
         else:
+
             st.error("Failed to get prediction from API")
