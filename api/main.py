@@ -20,7 +20,7 @@ class SalaryInput(BaseModel):
     YearsExperience: float
 
     class Config:
-        schema_extra = {
+       json_schema_extra = {
             "example": {
                 "YearsExperience": 5.5
             }
