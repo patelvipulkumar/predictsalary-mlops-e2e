@@ -16,15 +16,6 @@ LOCAL_MODEL_PATH = "models/model.pkl"
 app = FastAPI()
 
 # Define the input data schema using Pydantic for data validation
-class SalaryInput(BaseModel):
-    YearsExperience: float
-
-    class Config:
-       json_schema_extra = {
-            "example": {
-                "YearsExperience": 5.5
-            }
-        }
 
 def download_model():
     if not os.path.exists(LOCAL_MODEL_PATH):
@@ -37,7 +28,10 @@ download_model()
 
 model = joblib.load(LOCAL_MODEL_PATH)
 
+
+
 @app.post("/predict")
-def predict(exp: SalaryInput):   
-    prediction = model.predict(exp)[0]
+def predict(exp:float):
+    input_data=np.array([[exp]])
+    prediction = model.predict(input_data)[0]
     return {"Salary": prediction}
