@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: ui
-        image: patelvipulkumar/predictsalary-mlopsapi:latest
+        image: patelvipulkumar/predictsalary-mlopsui:latest
         ports:
         - containerPort: 8501
 ---
@@ -31,3 +31,4 @@ spec:
     targetPort: 8501
 
     nodePort: 30001
+
