@@ -26,5 +26,5 @@ model = joblib.load(LOCAL_MODEL_PATH)
 
 @app.post("/predict")
 def predict(exp: float):   
-    prediction = model.predict(exp)
+    prediction = model.predict(exp)[0]
     return {"Salary": prediction}
