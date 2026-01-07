@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 import joblib
 import boto3
+from pydantic import BaseModel
+import numpy as np
 import os
 
 # ---------------------------
@@ -12,6 +14,17 @@ LOCAL_MODEL_PATH = "models/model.pkl"
 # ---------------------------
 
 app = FastAPI()
+
+# Define the input data schema using Pydantic for data validation
+class SalaryInput(BaseModel):
+    YearsExperience: float
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "YearsExperience": 5.5
+            }
+        }
 
 def download_model():
     if not os.path.exists(LOCAL_MODEL_PATH):
@@ -25,6 +38,6 @@ download_model()
 model = joblib.load(LOCAL_MODEL_PATH)
 
 @app.post("/predict")
-def predict(exp: float):   
+def predict(exp: SalaryInput):   
     prediction = model.predict(exp)[0]
     return {"Salary": prediction}
