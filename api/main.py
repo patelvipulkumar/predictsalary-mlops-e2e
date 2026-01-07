@@ -34,4 +34,4 @@ model = joblib.load(LOCAL_MODEL_PATH)
 def predict(exp:float):
     input_data=np.array([[exp]])
     prediction = model.predict(input_data)[0]
-    return {"Salary": prediction}
+    return {"Salary":round(prediction,2)}

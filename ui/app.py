@@ -4,9 +4,9 @@ import requests
 # ⚠️ When running locally
 API_URL = "http://localhost:8000/predict"
 
-st.title("MLOps Salary predictor based on Years of Exp")
+st.title("Salary Predictor")
 
-exp = st.number_input("YrsofExp") 
+exp = st.number_input("Enter YearsOfExp") 
 
 if st.button("Predict"):
 
@@ -25,10 +25,8 @@ if st.button("Predict"):
 
             st.markdown(
                 f"""
-                ###Prediction Result
-                **Salary:** `{Salary}`
-                """
-            )
+                ###Predicted **Salary:** `{Salary}`
+                """)
         else:
 
             st.error("Failed to get prediction from API")
