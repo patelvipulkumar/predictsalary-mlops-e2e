@@ -8,7 +8,7 @@ import boto3
 import os
 import mlflow
 
-mlflow.autolog()
+#mlflow.autolog()
 
 S3_BUCKET = "edu-mlops-awsec2s3"
 S3_KEY = "latest/model.pkl"
@@ -31,8 +31,8 @@ r2 = r2_score(y_test, predictions)
 
 metrics = {"MSE": mse, "RMSE": rmse, "R-squared": r2}
 
-# with mlflow.start_run():
-  #  mlflow.log_metrics(metrics)
+with mlflow.start_run():
+  mlflow.log_metrics(metrics)
 
 joblib.dump(model, "models/model.pkl")
 print("MSE:", mse)
