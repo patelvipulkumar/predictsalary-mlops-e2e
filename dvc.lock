@@ -5,20 +5,20 @@ stages:
     deps:
     - path: data/raw/empexpsaldataset.csv
       hash: md5
-      md5: 7c0650bb79a0c3046e32a6b2faa8b405
-      size: 450
+      md5: 085103c75f0c31794488f4e7e77278ee
+      size: 534
   preprocess:
     cmd: python3 src/preprocessing.py
     deps:
     - path: data/raw/empexpsaldataset.csv
       hash: md5
-      md5: 7c0650bb79a0c3046e32a6b2faa8b405
-      size: 450
+      md5: 085103c75f0c31794488f4e7e77278ee
+      size: 534
     outs:
     - path: data/processed/empexpsalclean.csv
       hash: md5
-      md5: 7713452ec8bb56b4f317b0aece842c32
-      size: 393
+      md5: d21a4924707996cbe5c120b4d772e71e
+      size: 468
   train:
     cmd: python3 src/train.py
     deps:
