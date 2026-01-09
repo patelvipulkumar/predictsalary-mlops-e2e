@@ -1,3 +1,4 @@
+
 from fastapi import FastAPI
 import joblib
 import boto3
@@ -25,6 +26,8 @@ def download_model():
 
 # Download model ONCE at startup
 download_model()
+
+# Load pikel file using scikit-learn==1.7.2 version it is same mention in docker file
 
 model = joblib.load(LOCAL_MODEL_PATH)
 
